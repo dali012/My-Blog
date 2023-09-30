@@ -10,7 +10,8 @@ import { siteMetadata } from "@/src/utils/siteMetadata";
 const Footer = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data: FieldValues) => console.log(data);
+  // eslint-disable-next-line no-unused-vars
+  const onSubmit = (data: FieldValues) => {};
 
   return (
     <footer className="mt-16 rounded-2xl bg-dark dark:bg-accentDark/90 m-5 sm:m-10 flex flex-col items-center text-light dark:text-dark">
