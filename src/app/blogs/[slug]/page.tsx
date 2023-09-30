@@ -16,6 +16,34 @@ interface Props {
 export default function Page({ params: { slug } }: Props) {
   const blog = getBlogBySlug(slug);
 
+  let imageList = [siteMetadata.socialBanner];
+
+  if (blog?.image) {
+    //@ts-ignore
+    imageList =
+      typeof blog.image.filePath === "string"
+        ? [siteMetadata.siteUrl + parseImageUrl(blog.image.filePath)]
+        : blog.image;
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: blog?.title,
+    description: blog?.description,
+    image: imageList,
+    datePublished: new Date(blog!.publishedAt).toISOString(),
+    dateModified: new Date(blog!.updatedAt || blog!.publishedAt).toISOString(),
+    author: [
+      {
+        "@type": "Person",
+        name: blog?.author ? [blog.author] : siteMetadata.author,
+        url: siteMetadata.twitter,
+      },
+    ],
+  };
+
   return (
     <article>
       <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
