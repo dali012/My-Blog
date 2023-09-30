@@ -7,7 +7,8 @@ import { useForm, FieldValues } from "react-hook-form";
 const ContactForm = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSumbit = (data: FieldValues) => console.log(data);
+  // eslint-disable-next-line no-unused-vars
+  const onSumbit = (_data: FieldValues) => {};
 
   return (
     <form
