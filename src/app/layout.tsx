@@ -68,7 +68,7 @@ export default function RootLayout({
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-light dark:bg-dark",
+          "font-mr bg-light dark:bg-dark"
         )}
       >
         <Script id="tailwindcss-dark-mode">{`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
