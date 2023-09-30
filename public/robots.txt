@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.dali012.eu.org
+
+# Sitemaps
+Sitemap: https://www.dali012.eu.org/sitemap.xml
