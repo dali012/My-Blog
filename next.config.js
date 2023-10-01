@@ -10,12 +10,21 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "max-age=31536000, immutable",
+            value: "no-cache",
           },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          }
         ],
       },
     ];
   },
+  poweredByHeader: false
 };
 
 module.exports = withContentlayer({ ...nextConfig });

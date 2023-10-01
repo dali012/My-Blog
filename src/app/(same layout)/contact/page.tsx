@@ -1,5 +1,11 @@
-import ContactForm from "@/src/components/Contact/ContactForm";
-import LottieAnimation from "@/src/components/Contact/LottieAnimation";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(
+  () => import("@/src/components/Contact/ContactForm")
+);
+const LottieAnimation = dynamic(
+  () => import("@/src/components/Contact/LottieAnimation")
+);
 
 import { Metadata } from "next";
 

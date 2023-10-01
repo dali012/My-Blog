@@ -23,6 +23,7 @@ const Footer = () => {
         members community to stay up to date with latest news.
       </p>
       <form
+        autoComplete=""
         onSubmit={handleSubmit(onSubmit)}
         className="mt-6 w-fit sm:min-w-[384px] flex items-stretch bg-light dark:bg-dark p-1 sm:p-2 rounded mx-4"
       >

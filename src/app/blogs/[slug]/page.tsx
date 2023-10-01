@@ -1,12 +1,13 @@
-import BlogDetails from "@/src/components/Blog/BlogDetails";
-import RenderMdx from "@/src/components/Blog/RenderMdx";
-import Tag from "@/src/components/Elements/Tag";
 import Image from "next/image";
+import BlogDetails from "@/src/components/Blog/BlogDetails";
+import Tag from "@/src/components/Elements/Tag";
+import dynamic from "next/dynamic";
 
 import { slug as gSlug } from "github-slugger";
 import { TOC, getBlogBySlug, getBlogsPaths, parseImageUrl } from "@/src/utils";
 import { siteMetadata } from "@/src/utils/siteMetadata";
 
+const RenderMdx = dynamic(() => import("@/src/components/Blog/RenderMdx"));
 interface Props {
   params: {
     slug: string;
