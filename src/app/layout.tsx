@@ -1,13 +1,16 @@
 import React from "react";
-import Header from "@/src/components/Header";
-import Footer from "../components/Footer";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "./globals.css";
 
+import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { cx } from "@/src/utils";
 import { siteMetadata } from "@/src/utils/siteMetadata";
+
+const Header = dynamic(() => import("@/src/components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,6 +65,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const nonce = headers().get("x-nonce");
   return (
     <html lang="en">
       <body
@@ -71,7 +75,10 @@ export default function RootLayout({
           "font-mr bg-light dark:bg-dark"
         )}
       >
-        <Script id="tailwindcss-dark-mode">{`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        <Script
+          nonce={nonce ? nonce : undefined}
+          id="tailwindcss-dark-mode"
+        >{`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.documentElement.classList.add('dark')
 } else {
   document.documentElement.classList.remove('dark')

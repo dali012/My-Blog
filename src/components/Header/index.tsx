@@ -3,6 +3,7 @@
 import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import {
   GithubIcon,
@@ -13,8 +14,9 @@ import {
 } from "../Icons";
 import { siteMetadata } from "@/src/utils/siteMetadata";
 import { useThemeSwitch } from "@/src/hooks/useThemeSwitch";
-import MobileMenu from "./MobileMenu";
 import { cx } from "@/src/utils";
+
+const MobileMenu = dynamic(() => import("./MobileMenu"));
 
 const Header = () => {
   const [mode, setMode] = useThemeSwitch();
@@ -41,7 +43,7 @@ const Header = () => {
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
           className={cx(
             "w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1",
-            mode === "light" ? "bg-dark text-light" : "bg-light text-dark",
+            mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
           )}
           aria-label="theme-switcher"
           name="Theme Switcher"
